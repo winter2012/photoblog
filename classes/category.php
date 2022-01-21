@@ -8,7 +8,7 @@ class Category {
     $this->id = $id;
     $this->title = $title;
   }
-  function all() {
+  static function all() {
     $sql = "SELECT * FROM categories";
     $results = mysql_query($sql);
     $categories = Array();
@@ -18,12 +18,12 @@ class Category {
     return $categories;
 
   }
-  function render_menu() {
+  static function render_menu() {
     foreach (Category::all() as $cat) {
       echo "\t<li><a href=\"cat.php?id=".h($cat->id)."\">".h($cat->title)." | </a></li>\n";
     }
   }
-  function render_select() {
+  static function render_select() {
     echo "<select name=\"category\">";
     foreach (Category::all() as $cat) {
       echo "<option value=".h($cat->id).">".h($cat->title)."</option>";

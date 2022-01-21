@@ -2,7 +2,7 @@
 
 class User {
   const SITE= "PHOTOBLOG";
-  function login($user, $password) {
+  static function login($user, $password) {
     $sql = "SELECT * FROM users where login=\"";
     $sql.= mysql_real_escape_string($user);
     $sql.= "\" and password=md5(\"";

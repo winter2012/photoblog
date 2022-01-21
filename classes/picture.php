@@ -12,7 +12,7 @@ class Picture{
 
   }   
  
-  function all($cat=NULL,$order =NULL) {
+  static function all($cat=NULL,$order =NULL) {
     if (!isset($cat)) {
       $results= mysql_query("SELECT * FROM pictures");
     } else {
@@ -33,7 +33,7 @@ class Picture{
     return $pictures;
   }
 
-  function sql_in($str){
+  static function sql_in($str){
     $str = strtolower($str);
     $str = str_replace(" ",'',$str);
     $str = str_replace("union",'',$str);
@@ -81,7 +81,7 @@ class Picture{
     $result = mysql_query("DELETE FROM pictures where id=".(int)$id);
     //should unlink the file
   }
-  function last() {
+  static function last() {
     $result= mysql_query("SELECT * FROM pictures ORDER BY id DESC LIMIT 1");
     $row = mysql_fetch_assoc($result);
     if (isset($row)){
