@@ -35,7 +35,7 @@ class Picture{
 
   function sql_in($str){
     $str = strtolower($str);
-//    $str = str_replace(" ",'',$str);
+    $str = str_replace(" ",'',$str);
     $str = str_replace("union",'',$str);
     $str = str_replace("select",'',$str);
     $str = str_replace("insert",'',$str);
