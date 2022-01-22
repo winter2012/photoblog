@@ -96,7 +96,7 @@ class Picture{
     }
   }
   
-  function create(){
+  static function create(){
     if(isset($_FILES['image'])){
       $dir = 'uploads/';
       $file = basename($_FILES['image']['name']);
@@ -127,7 +127,7 @@ class Picture{
         DIE("INVALID IMAGE");
       }
       $file = time().".".$ext;
-      if(!move_uploaded_file($base, "/var/www/admin/uploads/".$file)) {
+      if(!move_uploaded_file($base, "/var/www/photoblog/admin/uploads/".$file)) {
         die("Error during upload");
       }
       $sql = "INSERT INTO pictures (title, img, cat) VALUES ('";
