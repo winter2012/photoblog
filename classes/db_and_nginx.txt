@@ -1,0 +1,19 @@
+grant all privileges on *.* to 'pentesterlab'@'%' identified by 'pentesterlab' with grant option;
+flush privileges;
+
+server {
+	listen       80;
+	server_name  _;
+	root /var/www/photoblog;
+
+	location / {
+		index index.php index.html;
+	}
+
+	location ~ \.php$ {
+		fastcgi_pass 127.0.0.1:9000;
+		fastcgi_index index.php;
+		fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+		include fastcgi_params;
+	}
+}
